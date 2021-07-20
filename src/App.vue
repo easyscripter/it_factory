@@ -1,32 +1,47 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="nav">
+      <vs-navbar color="dark" text-white not-line center-collapsed square>
+        <template #left>
+          <img class="logo" src="./assets/logo.png" alt="Логотип" />
+        </template>
+        <vs-navbar-item to="teacher-list"> Список репититоров </vs-navbar-item>
+        <vs-navbar-item> О нас </vs-navbar-item>
+        <template #right>
+          <vs-button warn border>Войти</vs-button>
+          <vs-button color="#7d33ff">Регистрация</vs-button>
+        </template>
+      </vs-navbar>
     </div>
-    <router-view/>
+    <div>
+      <router-view />
+    </div>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {};
+  },
+};
+</script>
+
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.logo {
+  margin-left: 10px;
+  max-width: 40px;
+  max-height: 40px;
+}
+.vs-navbar-content {
+  position: relative;
+  z-index: 2;
+  background-color: #000000;
+  padding-bottom: 5px;
 }
 </style>
