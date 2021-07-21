@@ -9,7 +9,7 @@
     </div>
     <div class="teacher-card__opinion">Оценка: {{ opinion }}</div>
     <div class="teacher-card__footer">
-      <vs-button warn> Подробнее </vs-button>
+      <vs-button @click="showProfile(id)" warn> Подробнее </vs-button>
     </div>
   </div>
 </template>
@@ -44,24 +44,51 @@ export default {
       required: true,
       type: Number,
     },
+    description: {
+      type: String,
+    },
+    isVerified: {
+      type: Boolean,
+    },
+    price: {
+      type: Object,
+    },
   },
   data() {
     return {};
+  },
+  methods: {
+    showProfile(id) {
+      this.$router.push({
+        name: "Профиль репититора",
+        params: {
+          id: id,
+          name: this.name,
+          surname: this.surname,
+          photo: this.photo,
+          description: this.description,
+          price: this.price,
+          isVerified: this.isVerified,
+        },
+      });
+    },
   },
 };
 </script>
 
 <style lang="scss">
 .teacher-card {
-  width: 250px;
+  width: calc(18.18% - 10px);
   padding: 15px;
   display: flex;
+  margin: 5px;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
   -webkit-box-shadow: -3.5px 2.5px 9px 0 #8d8d8d;
   -moz-box-shadow: -3.5px 2.5px 9px 0 #8d8d8d;
   box-shadow: -3.5px 2.5px 9px 0 #8d8d8d;
+  margin-right: 10px;
   &__photo img {
     max-width: 90px;
     max-height: 90px;
