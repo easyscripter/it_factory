@@ -124,7 +124,7 @@ export default {
 }
 
 .footer {
-  margin-left: 200px;
+  margin-left: 5%;
 }
 
 .feature-container {
