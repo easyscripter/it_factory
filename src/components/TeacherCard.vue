@@ -3,7 +3,9 @@
     <div class="teacher-card__photo">
       <img :src="photo" alt="Логотип препода" srcset="" />
     </div>
-    <div class="teacher-card__title">{{ name }} {{ surname }}</div>
+    <div class="teacher-card__title">
+      {{ name }} {{ surname }}, {{ foramtedAge }}
+    </div>
     <div class="teacher-card__description">
       Предмет: {{ subjectOfTeaching }}
     </div>
@@ -53,9 +55,30 @@ export default {
     price: {
       type: Object,
     },
+    age: {
+      type: Number,
+    },
   },
   data() {
     return {};
+  },
+  computed: {
+    foramtedAge() {
+      let newAge = "";
+      if (this.age % 100 >= 5 && this.age % 100 <= 20) {
+        newAge = `${this.age} лет`;
+      } else {
+        if (this.age % 10 == 1) {
+          newAge = `${this.age} год`;
+        } else if (this.age % 10 >= 2 && this.age % 10 <= 4) {
+          newAge = `${this.age} года`;
+        } else {
+          newAge = `${this.age} лет`;
+        }
+      }
+
+      return newAge;
+    },
   },
   methods: {
     showProfile(id) {
