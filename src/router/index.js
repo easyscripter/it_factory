@@ -6,9 +6,16 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/teacher-list',
+    path: '/',
     name: 'Список репититоров',
-    component: TeacherList
+    component: TeacherList,
+    children: [
+      {
+        path: '/teacher-list',
+        name: 'Список репититоров',
+        component: TeacherList
+      },
+    ]
   },
   {
     path: '/teacher-profile/:id',

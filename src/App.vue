@@ -5,7 +5,7 @@
         <template #left>
           <img class="logo" src="./assets/logo.png" alt="Логотип" />
         </template>
-        <vs-navbar-item to="teacher-list"> Список репититоров </vs-navbar-item>
+        <vs-navbar-item to="/"> Список репититоров </vs-navbar-item>
         <vs-navbar-item> О нас </vs-navbar-item>
         <template #right>
           <vs-button warn border>Войти</vs-button>
