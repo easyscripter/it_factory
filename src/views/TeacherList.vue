@@ -102,6 +102,14 @@
                 >
               </template>
             </vs-sidebar-item>
+            <vs-sidebar-item>
+              <template>
+                Верификация:
+                <vs-radio val="true" v-model="isVerifiedProfile">
+                  Верифицированный</vs-radio
+                >
+              </template>
+            </vs-sidebar-item>
             <template #footer>
               <vs-button @click="clearList" class="clear-list-btn" square
                 >Очистить список</vs-button
@@ -127,6 +135,7 @@ export default {
       minAgeValue: 10,
       maxAgeValue: 100,
       typeOfLesson: null,
+      isVerifiedProfile: null,
       teacherList: [
         {
           id: 1,
@@ -219,7 +228,7 @@ export default {
           subjectOfTeaching: "Алгебра",
           opinion: 6.7,
           photo:
-            "https://lh3.googleusercontent.com/proxy/SI7Ggs0CmX-Z9ijjZdPCrKvYj2Wh2wVag52vDsXaSBmb0_4aLToru_CDY-mv2DYEKb6XSPzSO4a6kjzXj0QGF4rvma3mPOIrPDEZnlF43zL9-T7MawIWo2DcwSXNZTq0eo57ZLBMfpZ0HQ",
+            "https://www.talisman-online.ru/storage/app/uploads/public/5ed/4b3/6a0/5ed4b36a0c226507174014.png",
           isVerified: true,
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error officiis facere temporibus, debitis, harum adipisci assumenda cum perferendis sit a enim in, ea libero consequatur! Officiis suscipit consectetur illo libero?",
@@ -294,6 +303,12 @@ export default {
         });
       }
 
+      if (this.isVerifiedProfile === "true") {
+        filteredTeachers = filteredTeachers.filter((teacher) => {
+          return teacher.isVerified == Boolean(this.isVerifiedProfile);
+        });
+      }
+
       return filteredTeachers;
     },
     minAge: {
@@ -327,7 +342,8 @@ export default {
     clearList() {
       (this.teachingSubject = null),
         (this.opinion = null),
-        (this.typeOfLesson = null);
+        (this.typeOfLesson = null),
+        (this.isVerifiedProfile = null);
     },
   },
 };
